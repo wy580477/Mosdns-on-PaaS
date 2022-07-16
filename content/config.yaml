@@ -5,7 +5,7 @@ log:
 
 data_providers:
   - tag: geosite
-    file: "/etc/mosdns/geosite.dat"
+    file: "/etc/mosdns/dlc.dat"
     auto_reload: true
   - tag: geoip
     file: "/etc/mosdns/geoip.dat"
