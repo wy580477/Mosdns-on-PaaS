@@ -41,8 +41,6 @@ plugins:
     args:
       auto: true
       force_overwrite: false  
-      mask4: 24 
-      mask6: 48
 
   - tag: "hosts"
     type: "hosts"
@@ -72,8 +70,7 @@ plugins:
     args:
       exec:
         - _misc_optm
-        - mem_cache
-       
+        - mem_cache       
       # - hosts
         
         # AD blocking
@@ -82,7 +79,7 @@ plugins:
             - _new_nxdomain_response
             - _return
         
-        # If you wish to disable ECS, commmet out following line.
+        # If you wish to disable ECS, comment out following line.
         - add_ecs
 
         - forward_upstream
@@ -90,7 +87,7 @@ plugins:
       # Block CN IP responses.
       # - if: response_has_blacklist_ip
       #   exec:
-      #     - _new_nxdomain_response
+      #     - _drop_response
       #     - _return
 
         - _return
