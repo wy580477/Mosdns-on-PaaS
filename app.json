@@ -1,0 +1,11 @@
+{
+    "name": "Mosdns on Heroku",
+    "description": "Deploy DNS over HTTPS on Heroku",
+    "env": {
+        "DOH_PATH": {
+            "description": "Custom DOH Path",
+            "value": "/dns-query"
+        }
+    },
+    "stack": "container"
+}

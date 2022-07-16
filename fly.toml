@@ -1,0 +1,21 @@
+[env]
+  DOH_PATH = "/dns-query"
+
+[[services]]
+  internal_port = 8080
+  protocol = "tcp"
+
+  [[services.ports]]
+    handlers = ["http"]
+    port = 80
+    force_https = true
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
+
+  [[services.tcp_checks]]
+    grace_period = "120s"
+    interval = "15s"
+    restart_limit = 0
+    timeout = "2s"

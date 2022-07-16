@@ -1,0 +1,105 @@
+# For detailed configuration guide(In Chinese): https://irine-sistiana.gitbook.io/mosdns-wiki/
+
+log:
+  level: info
+
+data_providers:
+  - tag: geosite
+    file: "/etc/mosdns/geosite.dat"
+    auto_reload: true
+  - tag: geoip
+    file: "/etc/mosdns/geoip.dat"
+    auto_reload: true
+
+plugins:
+  - tag: "forward_upstream"
+    type: "fast_forward"
+    args:
+      upstream:
+        - addr: tls://8.8.8.8
+        # dial_addr: "8.8.8.8"
+          trusted: true
+          enable_pipeline: true
+        - addr: tls://8.8.4.4
+          trusted: true
+          enable_pipeline: true
+        # UDP: 8.8.8.8, 208.67.222.222:443
+        # TCP: tcp://8.8.8.8
+        # DoT: tls://8.8.8.8:853
+        # DoH: https://8.8.8.8/dns-query
+        # If you are using Domain Name as upstream addr, you need to specify ip address in dial_addr.
+
+  - tag: "mem_cache"
+    type: "cache"
+    args:
+      size: 40960
+      lazy_cache_ttl: 259200
+      lazy_cache_reply_ttl: 30
+
+  - tag: "add_ecs"
+    type: "ecs"
+    args:
+      auto: true
+      force_overwrite: false  
+      mask4: 24 
+      mask6: 48
+
+  - tag: "hosts"
+    type: "hosts"
+    args:
+      hosts:
+        - "example.example 127.0.0.1"
+
+  - tag: query_is_blacklist_domain
+    type: query_matcher
+    args:
+      domain:
+        - 'provider:geosite:category-ads'
+      # - 'provider:geosite:category-porn'
+      # - "example.example"
+  # For more info on geosite: https://github.com/v2fly/domain-list-community/tree/master/data
+
+  - tag: response_has_blacklist_ip
+    type: response_matcher
+    args:
+      ip:
+        - 'provider:geoip:cn'
+      # - "192.168.1.1/24"
+  # geoip support two-letter country code: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
+
+  - tag: "forward"
+    type: "sequence"
+    args:
+      exec:
+        - _misc_optm
+        - mem_cache
+       
+      # - hosts
+        
+        # AD blocking
+        - if: query_is_blacklist_domain
+          exec:
+            - _new_nxdomain_response
+            - _return
+        
+        # If you wish to disable ECS, commmet out following line.
+        - add_ecs
+
+        - forward_upstream
+      
+      # Block CN IP responses.
+      # - if: response_has_blacklist_ip
+      #   exec:
+      #     - _new_nxdomain_response
+      #     - _return
+
+        - _return
+
+servers:
+  - exec: forward    
+    timeout: 5    
+    listeners:   
+      - protocol: http
+        addr: ":PORT_PLACEHOLDER"   
+        url_path: "PATH_PLACEHOLDER"
+        get_user_ip_from_header: "X-Forwarded-For"
