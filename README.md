@@ -19,7 +19,7 @@ This repo is for deploying [mosdns](https://github.com/IrineSistiana/mosdns) whi
 
 - Fork this repo
 - Modify /content/config.yaml to suit your needs. Default config file has ad-blocking and ECS enabled.
-- Strongly recommend custom DOH_PATH env value.
+- Strongly recommend custom DOH_PATH env value to prevent other ppl from abusing your deployment.
 
 ### Deploy to Heroku 
 - You need credit card verified account to run dyno 24*7, otherwise you will be limited to 550 hours per month.
