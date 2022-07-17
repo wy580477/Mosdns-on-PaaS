@@ -22,7 +22,8 @@ This repo is for deploying [mosdns](https://github.com/IrineSistiana/mosdns) whi
 - Strongly recommend custom DOH_PATH env value to prevent other ppl from abusing your deployment.
 
 ### Deploy to Heroku 
-- You need credit card verified account to run dyno 24*7, otherwise you will be limited to 550 hours per month.
+- You need credit card verified account to run dyno 24*7, otherwise you will be limited to 550 hours per month.  
+
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 ### Deploy to Okteto, Railway, Northflank etc.
