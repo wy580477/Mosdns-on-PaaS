@@ -11,7 +11,7 @@
 
 ## <a id="Overview"></a>Overview
 
-This repo is for deploying [mosdns](https://github.com/IrineSistiana/mosdns) which is an advanced DNS forwarder on various PaaS platforms (Heroku, Okteto, Railway, Northflank, fly.io, etc.).
+This repo is for deploying [mosdns](https://github.com/IrineSistiana/mosdns) DoH service which is an advanced DNS forwarder on various PaaS platforms (Heroku, Okteto, Railway, Northflank, fly.io, etc.).
 
 ![未命名绘图 (1)](https://user-images.githubusercontent.com/98247050/179379517-1cb35632-e594-4712-8d62-f0ef1ba5c8d9.jpg)
 
