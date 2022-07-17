@@ -70,8 +70,14 @@ plugins:
     args:
       exec:
         - _misc_optm
-        - mem_cache       
+        - mem_cache
       # - hosts
+
+      # Block AAAA dns request for dual-stack domains
+      # - _prefer_ipv4
+      
+      # Block A dns request for dual-stack domains
+      # - _prefer_ipv6
         
         # AD blocking
         - if: query_is_blacklist_domain
