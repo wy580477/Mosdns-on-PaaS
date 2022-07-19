@@ -45,8 +45,8 @@ check_sum() {
 
 install_file() {
   mkdir -p ${DAT_PATH} 2>/dev/null
-  install -m 644 "${dir_tmp}"/${file_dlc} "${DAT_PATH}"/${file_dlc}
-  install -m 644 "${dir_tmp}"/${file_ip} "${DAT_PATH}"/${file_ip}
+  cp -af "${dir_tmp}"/${file_dlc} "${DAT_PATH}"/${file_dlc}
+  cp -af "${dir_tmp}"/${file_ip} "${DAT_PATH}"/${file_ip}
   rm -r "${dir_tmp}"
 }
 
