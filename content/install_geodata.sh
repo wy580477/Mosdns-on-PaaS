@@ -10,6 +10,8 @@
 # You can set this variable whatever you want in shell session right before running this script by issuing:
 # export DAT_PATH='/usr/local/lib/v2ray'
 
+set -x
+
 DAT_PATH=${DAT_PATH:-/etc/mosdns}
 
 DOWNLOAD_LINK_GEOIP="https://github.com/v2fly/geoip/releases/latest/download/geoip.dat"
