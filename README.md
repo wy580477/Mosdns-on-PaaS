@@ -22,7 +22,7 @@ This repo is for deploying [mosdns](https://github.com/IrineSistiana/mosdns) DoH
 - Strongly recommend custom DOH_PATH env value to prevent other ppl from abusing your deployment.
 
 ### Deploy to Heroku 
-- You need credit card verified account to run dyno 24*7, otherwise you will be limited to 550 hours per month.  
+- Heroku will stop offering free product plans and shut down free dynos starting Nov. 28, 2022. 
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
