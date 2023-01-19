@@ -1,4 +1,4 @@
-# For detailed configuration guide(In Chinese): https://irine-sistiana.gitbook.io/mosdns-wiki/
+# For detailed configuration guide(In Chinese): https://irine-sistiana.gitbook.io/mosdns-wiki/mosdns-v4/
 
 log:
   level: info
